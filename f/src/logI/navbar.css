@@ -1,0 +1,62 @@
+.navMain{
+    display: flex;
+    height: 40px;
+    align-items: center;
+    padding: 5px;
+}
+
+.item-2{
+    flex-grow: 1;
+    height: 30px;   
+}
+
+
+.menuIcon {
+    margin-right: 6px;
+    display: flex;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.menuIcon img {
+    width: 30px;
+}
+
+.menuIcon1 {
+    animation: infinite;
+    transition: all 300ms ease-in-out;
+}
+.menuIcon1-2 {
+    rotate: -45deg;
+    position: relative;
+    top: 10px;
+    left: px;
+    animation: infinite;
+    transition: all 300ms ease-in-out;
+}
+
+.menuIcon2 {
+    animation: infinite;
+    transition: all 300ms ease-in-out;
+}
+.menuIcon2-2 {
+    position: relative;
+    animation: infinite;
+    transition: all 300ms ease-in-out;
+    opacity: 0%;
+}
+
+.menuIcon3 {
+    animation: infinite;
+    transition: all 300ms ease-in-out;
+}
+.menuIcon3-2 {
+    rotate: 45deg;
+    position: relative;
+    top: -10px;
+    animation: infinite;
+    transition: all 300ms ease-in-out;
+}

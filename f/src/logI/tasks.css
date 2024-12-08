@@ -1,0 +1,49 @@
+.container1 {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+
+
+
+
+.headerTitle {
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
+    margin: 5px 5px 5px 0px;
+}
+
+
+.newTaskArea {
+    border-radius: 10px;
+    background-color: rgb(240, 240, 240);
+    padding: 5px;
+
+    position: absolute;
+
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #badeff;
+    box-Shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    
+}
+
+.taskArea {
+    border-radius: 10px;
+    background-color: rgb(240, 240, 240);
+    padding: 5px;
+    margin: 5px;
+}
+
+.newTaskAreaMain{
+    display: flex;
+    justify-content: center;
+}
+
+.options {
+    display: flex;
+    justify-content: space-around;
+    margin: 5px;
+}
