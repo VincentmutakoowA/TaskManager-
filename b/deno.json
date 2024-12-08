@@ -1,0 +1,12 @@
+{
+  "tasks": {
+    "dev": "deno run --watch --allow-read --allow-env --allow-net main.js"
+  },
+  "imports": {
+    "@std/assert": "jsr:@std/assert@1",
+    "bcryptjs": "npm:bcryptjs@^2.4.3",
+    "body-parser": "npm:body-parser@^1.20.3",
+    "express": "npm:express@^4.21.1",
+    "jsonwebtoken": "npm:jsonwebtoken@^9.0.2"
+  }
+}
