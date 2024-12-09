@@ -42,11 +42,14 @@
 }
 
 
-
-
-
-
-
+button {
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
 
 .primary {
   background-color: #4ed9ff;
@@ -54,11 +57,9 @@
   border: none;
   font-size: 16px;
   border-radius: 25px;
-  cursor: pointer;
-  transition: background-color 0.3s;
 }
 .primary:hover{
-  background-color: rgb(75, 183, 255);
+  background-color: rgb(0, 127, 211);
 }
 .danger-btn {
   background-color: #ff4747;

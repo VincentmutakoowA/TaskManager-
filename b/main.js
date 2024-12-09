@@ -6,13 +6,14 @@ const corsOptions = {
     credentials: true,  // Allow cookies and authorization headers
     optionsSuccessStatus: 204  // Default status code for successful OPTIONS responses
 };
-
 import jwt from "npm:jsonwebtoken"
 import bcrypt from "npm:bcryptjs"
+import cookieParser from 'npm:cookie-parser';
 
 import express from "npm:express@4.21.1"
 const app = express()
 app.use(cors(corsOptions))
+app.use(cookieParser());
 app.use(express.json())
 
 //////////////////////////////////////////////TO DATABASE
@@ -43,7 +44,7 @@ app.post('/login', async (req, res)=> {
     if (!isPasswordValid) return res.status(400).json({error: 'Invalid credentials'})
 
     const token = jwt.sign({ username }, SECRET_KEY, { expiresIn: '1hr' });
-    res.cookie('token', token, {
+    res.cookie('authToken', token, {
         httpOnly: true, // Prevents access via JavaScript
         secure: false,   // Ensures the cookie is only sent over HTTPS
         sameSite: 'Strict', // Protects against CSRF
@@ -51,15 +52,23 @@ app.post('/login', async (req, res)=> {
     res.send('Login successful');
 })
 app.get('/user', (req, res) => {
-    const token = req.cookies.token
+    
+    const token = req.cookies
+    console.log(token)
+
     if (!token) return res.status(403).json({ error: 'No token provided' });
 
-    jwt.verify(token, SECRET_KEY, (err, decoded) => {
+    jwt.verify(token.authToken, SECRET_KEY, (err, decoded) => {
         if (err) return res.status(401).json({ error: 'Invalid token' });
         res.json({ message: 'Protected data', user: decoded });
     });
+    
+});
+app.post('/logout', (req, res) => {
+    res.clearCookie('authToken'); // Clear the cookie
+    res.json({ message: 'Logout successful' });
 });
 
-import cookieParser from 'npm:cookie-parser';
-app.use(cookieParser());
 app.listen(8000)
+
+//const token = req.headers.cookie

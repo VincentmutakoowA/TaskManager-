@@ -12,7 +12,7 @@ export default function App2() {
             <BrowserRouter>
                 <Routes>
                     <Route path = "/" element={<Hero />} />
-                    <Route path =  "/login" element={<AuthForm/>}/>
+                    <Route path =  "/login" element={<AuthForm />}/>
                 </Routes>
             </BrowserRouter>
         </>

@@ -4,6 +4,7 @@ import axios from "axios";
 import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import LoadingBar from 'react-top-loading-bar'
+import { useNavigate } from 'react-router'
 
 const AuthForm = () => {
 
@@ -24,20 +25,18 @@ const AuthForm = () => {
     let toastMessage;
     e.preventDefault();
     if (isLogin) {
-      console.log("Login Data:", { username: formData.username, password: formData.password });
       axios.post('http://localhost:8000/login', { username: formData.username, password: formData.password }, { withCredentials: true })
         .then((response) => {
           console.log(response); toastMessage = response.data;
           toast.success(toastMessage), { position: 'top-center' }
+          return handleRedirectWithRefresh()
         })
         .catch((err) => {
           err.status === 400 ? toastMessage = 'Invalid Details' : toastMessage = err.message
           toast.error(toastMessage, { position: 'top-center' })
         })
         .finally(() => { ref.current.complete() })
-
     } else {
-      console.log("Sign Up Data:", formData);
       axios.post('http://localhost:8000/register', formData)
         .then((response) => { toastMessage = response.data.message })
         .then(() => { toast.success(toastMessage, { position: 'top-center' }) })
@@ -45,14 +44,19 @@ const AuthForm = () => {
           toastMessage = (err.message)
           toast.error(toastMessage, { position: 'top-center' })
         })
-
         .finally(() => { ref.current.complete() })
     }
   };
 
   ////////////////OTHER
   const ref = useRef(null)
+  const navigate = useNavigate();
 
+  const handleRedirectWithRefresh = () => {
+    navigate('/');
+    window.location.reload(); // Forces a refresh after navigating
+  };
+  
 
   return (
     <div className="auth-container1">

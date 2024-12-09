@@ -1,7 +1,12 @@
-/* eslint-disable react/prop-types */
+////GET USER OBJECT PROFILES NAME AND COLOR MODE
 
+import { useState } from 'react';
 import './menu.css'
+import { logOut } from '../requests/requests';
+
 export default function Menu({ isMenuOpen  }) {
+
+    const [ colorMode, setColorMode ] = useState('Dark')
 
     
     let menuHeight;
@@ -16,8 +21,8 @@ export default function Menu({ isMenuOpen  }) {
             <div className={menuHeight}>
                 
                 <h3>Profile Name</h3>
-                <h3>Toggle Dark</h3>
-                <h3>Log Out</h3>     
+                <h3>{colorMode} Mode</h3>
+                <h3 onClick={logOut} >Log Out</h3>     
             </div>
         </>
     )
