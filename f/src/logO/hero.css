@@ -1,14 +1,23 @@
-.imageContainer1{
-display: flex;
- flex-grow: 1;  
- justify-content: center;
- align-items: center;
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: space-around;
 }
 
-.imageContainer2{
- flex-grow: 1;
+.imageContainer {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+}
+.imageContainer img{
+    width: 200px;
 }
 
-.imageContainer2 img {
-    max-width: 300px;
+
+
+.mainContainer p{
+    font-weight: bold;
 }

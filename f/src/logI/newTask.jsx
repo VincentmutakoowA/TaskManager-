@@ -33,7 +33,7 @@ const NewTask = () => {
                     <div className="newTaskArea">
                         <h3>Add New Task</h3>
                         <form>
-                            <div className="mb-4">
+                            <div className="taskInput">
                                 <label>Task: </label>
                                 <input type="text" name="taskName" required />
                             </div>

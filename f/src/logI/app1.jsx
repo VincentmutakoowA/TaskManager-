@@ -4,7 +4,7 @@ import Menu from "./menu"
 import { useState } from "react"
 import Tasks from "./tasks"
 
-export default function App1(){
+export default function App1({userName}){
 
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     function setMenu() {
@@ -14,7 +14,7 @@ export default function App1(){
     return(
         <>
         <Navbar setMenu={setMenu}/>
-        <Menu isMenuOpen={isMenuOpen}/>
+        <Menu isMenuOpen={isMenuOpen} userName={userName}/>
         <Tasks/>
         </>
     )

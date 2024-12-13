@@ -9,7 +9,6 @@ export default function Tasks() {
             <div className="container1">
                 <NewTask />
                 <OneTask />
-
             </div>
         </>
     )

@@ -34,6 +34,7 @@ const AuthForm = () => {
         .catch((err) => {
           err.status === 400 ? toastMessage = 'Invalid Details' : toastMessage = err.message
           toast.error(toastMessage, { position: 'top-center' })
+          console.log(err)
         })
         .finally(() => { ref.current.complete() })
     } else {
@@ -51,7 +52,6 @@ const AuthForm = () => {
   ////////////////OTHER
   const ref = useRef(null)
   const navigate = useNavigate();
-
   const handleRedirectWithRefresh = () => {
     navigate('/');
     window.location.reload(); // Forces a refresh after navigating

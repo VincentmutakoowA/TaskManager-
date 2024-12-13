@@ -15,10 +15,11 @@ export default function Hero() {
         <>
             <Navbar setMenu={setMenu} />
             <Menu isMenuOpen={isMenuOpen} />
-            <div className="imageContainer1">
-                <div className="imageContainer2">
+            <div className="mainContainer">
+                <div className="imageContainer">
                     <img src={image1} className="image1"></img>
                 </div>
+                <p>BY: Vincent Mutakoowa</p>
             </div>
         </>
     )
