@@ -6,8 +6,10 @@ import "react-toastify/dist/ReactToastify.css";
 import LoadingBar from 'react-top-loading-bar'
 import { useNavigate } from 'react-router'
 
+
 const AuthForm = () => {
 
+  const ref = useRef(null)
   const [isLogin, setIsLogin] = useState(true);
   const [formData, setFormData] = useState({
     username: "",
@@ -40,7 +42,12 @@ const AuthForm = () => {
     } else {
       axios.post('http://localhost:8000/register', formData)
         .then((response) => { toastMessage = response.data.message })
-        .then(() => { toast.success(toastMessage, { position: 'top-center' }) })
+        .then(() => { 
+          if(toastMessage == 'Username in use, please try another'){
+            toast.warning(toastMessage, { position: 'top-center'})
+          } else {toast.success(toastMessage, { position: 'top-center' })}
+         }
+        )
         .catch((err) => {
           toastMessage = (err.message)
           toast.error(toastMessage, { position: 'top-center' })
@@ -49,12 +56,11 @@ const AuthForm = () => {
     }
   };
 
-  ////////////////OTHER
-  const ref = useRef(null)
+  //////////////// BACK TO HOME AND REFRESH
   const navigate = useNavigate();
   const handleRedirectWithRefresh = () => {
     navigate('/');
-    window.location.reload(); // Forces a refresh after navigating
+    window.location.reload();
   };
   
 

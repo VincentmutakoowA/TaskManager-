@@ -5,6 +5,7 @@
   flex-direction: column;
   flex-grow: 1;
 }
+
 .dark {
   background-color: #000000;
   color: #fff;
@@ -17,7 +18,6 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 1280px;
   margin: 0 auto;
   text-align: center;
 }
@@ -29,11 +29,11 @@
 }
 
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em #4ed9ff);
 }
 
 .logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  filter: drop-shadow(0 0 2em #4ed9ff);
 }
 
 @keyframes logo-spin {

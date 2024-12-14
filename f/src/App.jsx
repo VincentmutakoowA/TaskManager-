@@ -8,7 +8,7 @@ import App2 from './logO/app2'
 function App() {
 
   const [loggedIn, setLoggedIn] = useState(false)
-  const [colorMode, setColorMode] = useState('lightMode')
+  const [colorMode, setColorMode] = useState('light')
 
   const [user, setUser] = useState({
     userId: '',
@@ -26,6 +26,7 @@ function App() {
       .then((response) => {
         console.log(response.data)
         setUser(response.data)
+        setColorMode(user.mode)
         response.status === 200 ? setLoggedIn(true) : setLoggedIn(false)
       })
       .catch((err) => { console.log(err) })
@@ -33,7 +34,7 @@ function App() {
 
   return (
     <>
-      <div className={user.mode}>
+      <div className={colorMode}>
         {loggedIn ? <App1 userName={user.username} /> : <App2 />}
       </div>
     </>

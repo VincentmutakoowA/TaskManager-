@@ -30,6 +30,6 @@
 }
 
 .loginImg img:hover{
-    filter: drop-shadow(0 0 2em #646cffaa);
+    filter: drop-shadow(0 0 2em #4ed9ff);
     transition: 200ms ease-in-out;
 }
