@@ -9,16 +9,19 @@ const connectionInfo = {
 }
 
 
+/////           USER DATA                //////////////////////////////////
 export async function getUser(username) {
     try {
         await client.connect(connectionInfo);
 
-        const sql = "SELECT username, passwordHash FROM user where username = ?"
+        const sql = "SELECT userId, username, passwordHash, mode FROM user where username = ?"
 
         const result = await client.query(sql, [username]);
+        console.log(result)
+        if (result.length == 0) return null;
         return result;
     } catch (error) {
-        console.log("Error", error);
+        console.log("E", error);
     }
     finally {
         await client.close();
@@ -44,35 +47,99 @@ export async function addUser(username, email, passwordHash) {
     }
 }
 
+export async function switchMode (username) {
+    let color = {mode: ""}
+    let colorMode;
 
+    const sql1 = 'select mode from user where username = ?'
+    const sql2 = 'update user set mode = ? where username = ?'
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-export async function dbPost(task) {
     try {
-        await client.connect({
-            database: "tasks",
-            username: "root",
-            hostname: "localhost",
-            password: "rootLove25$gray"
-        });
+        await client.connect(connectionInfo);
+        colorMode = await client.query(sql1, [username])
+        color = colorMode[0]
+        color.mode === "light" ? colorMode = "dark" : colorMode = "light"
+        const result = await client.query(sql2, [colorMode, username])
+        return result
 
-        const sql = "insert into tasks ( description, completed ) values (?, ?)";
+    } catch (error) {
+        console.log(error)
+    } 
+    finally {
+        await client.close();
+    } 
+}
 
-        await client.query("use tasks");
-        const result = await client.query(sql, [task, 0]);
+export async function deleteUser(userId){
+    const sql1 = "DELETE FROM task WHERE userId =?"
+    const sql2 = "DELETE FROM user WHERE userId =?"
+    try {
+        await client.connect(connectionInfo);
+
+        const result1 = await client.query(sql1, [userId])
+        if(result1.error) return result1.error
+        const result2 = await client.query(sql2, [userId]);
+
+        console.log('Result1: ', result1)
+        console.log('Result2: ', result2)
+
+        return result2;
+    } catch (error) {
+        console.log("Error", error);
+    }
+    finally {
+        await client.close();
+    }
+}
+
+
+
+
+/////////////TASKS //   //  //  /////////////
+export async function addTask(userId, description){
+    const sql = "INSERT INTO task (userId, description) VALUES (?,?)"
+    try {
+        await client.connect(connectionInfo);
+        const result = await client.query(sql, [userId, description]);
+        return result;
+    } catch (error) {
+        console.log("Error", error);
+    }
+    finally {
+        await client.close();
+    }
+}
+export async function getTasks(userId){
+    const sql = "SELECT * FROM task WHERE userId =?"
+    try {
+        await client.connect(connectionInfo);
+        const result = await client.query(sql, [userId]);
+        return result;
+    } catch (error) {
+        console.log("Error", error);
+    }
+    finally {
+        await client.close();
+    }
+}
+export async function updateTask(taskId, description){
+    const sql = "UPDATE task SET description =? WHERE taskId =?"
+    try {
+        await client.connect(connectionInfo);
+        const result = await client.query(sql, [description, taskId]);
+        return result;
+    } catch (error) {
+        console.log("Error", error);
+    }
+    finally {
+        await client.close();
+    }
+}
+export async function deleteTask(taskId) {
+    const sql = "DELETE FROM task WHERE taskId =?"
+    try {
+        await client.connect(connectionInfo);
+        const result = await client.query(sql, [taskId]);
         return result;
     } catch (error) {
         console.log("Error", error);
@@ -82,50 +149,24 @@ export async function dbPost(task) {
     }
 }
 
-export async function dbPut(taskObj) {
 
+
+
+
+
+/////////////     PASSWORD RESET  /////////////////
+export async function resetPassword(email, newPassword) {
     try {
-        await client.connect({
-            database: "tasks",
-            username: "root",
-            hostname: "localhost",
-            password: "rootLove25$gray"
-        })
-        const sql = "update tasks set description = ? where id = ?"
+        await client.connect(connectionInfo)
+       
+        const sql = "UPDATE user SET passwordHash = ? WHERE email = ?";
 
-        await client.query("use tasks");
-        const result = await (client.query(sql, [taskObj.description, taskObj.id]))
+        const result = await client.query(sql, [newPassword, email]);
         return result;
-    }
-    catch (error) {
-        return console.error("Error executing query:", error);
-    }
-    finally {
-        await client.close()
-    }
-}
-
-export async function dbDelete(params) {
-
-    try {
-        await client.connect({
-            database: "tasks",
-            username: "root",
-            hostname: "localhost",
-            password: "rootLove25$gray"
-        })
-
-        const sql = "DELETE FROM tasks WHERE id = ?;"
-        await client.query("use tasks")
-        const result = await client.execute(sql, [params])
-        return result;
-
-    }
-    catch (error) {
-        return error;
+    } catch (error) {
+        console.log("Error", error);
     }
     finally {
         await client.close();
-        console.log(params)
     }
 }

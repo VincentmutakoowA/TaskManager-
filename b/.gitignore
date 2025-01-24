@@ -1,0 +1,48 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Vite cache
+.vite/
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor directories and files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Env files
+.env
+.env.*.local
+
+# MacOS-specific
+*.DS_Store
+
+# Vite-specific files
+*.cache
+
+# Lint and formatting
+eslintcache
+*.log
+.prettier*
+
+# Test and coverage directories
+coverage/
+*.lcov
+
+# Other
+*.local

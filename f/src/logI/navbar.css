@@ -21,10 +21,13 @@
     justify-content: space-around;
 }
 
+
 .menuIcon img {
     width: 30px;
 }
-
+.dark .menuIcon img {
+    filter: invert(100%);
+}
 .menuIcon1 {
     animation: infinite;
     transition: all 300ms ease-in-out;
@@ -37,7 +40,6 @@
     animation: infinite;
     transition: all 300ms ease-in-out;
 }
-
 .menuIcon2 {
     animation: infinite;
     transition: all 300ms ease-in-out;
@@ -48,7 +50,6 @@
     transition: all 300ms ease-in-out;
     opacity: 0%;
 }
-
 .menuIcon3 {
     animation: infinite;
     transition: all 300ms ease-in-out;

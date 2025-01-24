@@ -1,9 +1,21 @@
-.auth-container1{
+.main-container1{
   display: flex;
   height: 100vh;
-  align-items: center;
+  flex-direction: column;
 }
-
+.reset-container1{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+.auth-container1{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: center;
+}
 .auth-container2{
     display: flex;
     flex-direction: column;
@@ -59,10 +71,7 @@
   .form-group input {
     width: 100%;
     padding: 10px;
-    font-size: 14px;
-    border: none;
     border-radius: 25px;
-    
   }
   
   .submit-btn {
@@ -79,4 +88,23 @@
   .submit-btn:hover {
     background-color: #000000;
     color: white;
+  }
+
+  .btnNone {
+    background: none;
+    border: none;
+    padding: 0;
+    color: #4ed9ff;
+  }
+
+  .btnNone :hover {
+    color: #000000;
+  }
+  
+  .backDiv{
+    padding: 20px;
+    display: flex;
+  }
+  .backDiv img{
+    width: 40px;
   }

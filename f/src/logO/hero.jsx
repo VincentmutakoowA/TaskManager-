@@ -1,26 +1,19 @@
-import { useState } from "react"
 import Navbar from "./navbar"
-import Menu from "./menu"
 import './hero.css'
-import image1 from "../assets/image1.svg"
+import hero1 from "../assets/hero.svg"
 
-export default function Hero() {
-
-    const [isMenuOpen, setIsMenuOpen] = useState(false)
-    function setMenu() {
-        setIsMenuOpen(!isMenuOpen)
-    }
+// eslint-disable-next-line react/prop-types
+export default function Hero({setAuthForm}) {
 
     return (
         <>
-            <Navbar setMenu={setMenu} />
-            <Menu isMenuOpen={isMenuOpen} />
+            <Navbar />
             <div className="mainContainer">
-                <h1>TASK MANAGER</h1>
                 <div className="imageContainer">
-                    <img src={image1} className="image1"></img>
+                    <img src={hero1}></img>
+                    <button className="primary" onClick={setAuthForm}>GET STARTED</button>
                 </div>
-                <p>BY: Vincent Mutakoowa</p>
+                <p>App by : Vincent Mutakoowa</p>
             </div>
         </>
     )

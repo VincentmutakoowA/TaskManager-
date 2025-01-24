@@ -1,7 +1,6 @@
 .container1 {
     display: flex;
     flex-direction: column;
-    padding: 5px;
 }
 
 
@@ -12,44 +11,104 @@
     display: flex;
     flex-grow: 1;
     justify-content: flex-end;
-    margin: 5px 5px 5px 0px;
+    margin: 5px 0px 5px 0px;
 }
 
 
+.taskArea {
+    border-radius: 20px;
+    border: solid 1px #7e7e7e;
+    margin: 3px 0px;
+    background: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*      TASK AREA   */
+.options {
+    display: flex;
+    justify-content: space-around;
+    margin: 5px;
+    transition: 300ms ease-in-out;
+}
+
+.taskInput input{
+    height: 40px;
+}
+.moreDiv{
+    display: flex;
+    justify-content: center;
+    height: 40px;
+}
+.moreDiv:hover{
+    cursor: pointer;
+}
+.moreDiv img{
+    width: 25px;
+}
+/* Add these new styles */
+.light .moreDiv img {
+    filter: invert(50%);
+}
+
+.dark .moreDiv img {
+    filter: invert(50%);
+}
+
+
+
+
+
+
+
+
+
+
+/*   NEW TASK   */
+.newTaskAreaMain{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+
+    
+}
 .newTaskArea {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     border-radius: 10px;
-    background-color: rgb(139, 139, 139);
-    position: absolute;
+    overflow: hidden;
     width: 250px;
-    height: 160px;
-    border: 2px solid #4ed9ff; 
+    height: 170px;
+    border: 1px solid #7e7e7e;
+    padding: 0px 10px 0px 10px;
+    background-color: rgb(209, 209, 209);
+}
+.dark .newTaskArea {
+    background-color: #2e2e2e;
 }
 
-.taskArea {
-    border-radius: 10px;
 
-    padding: 5px;
-    margin: 5px;
-    border: solid 2px #4ed9ff;
-}
 
-.newTaskAreaMain{
+
+/*    UPDATE TASK    */
+.updateTaskUiMain{
     display: flex;
-    justify-content: center;
+    align-items: center;
 }
-
-.options {
+.updateTaskUiMainInputArea{
+    flex-grow: 1;
+}
+.updateTaskUiMainOtherArea{
     display: flex;
-    justify-content: space-around;
-    margin: 5px;
-}
-
-.taskInput {
-    margin: 0px 0px 5px 0px;
-}
-.taskInput input{
-    height: 40px;
 }
